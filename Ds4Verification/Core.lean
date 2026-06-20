@@ -189,14 +189,30 @@ def KreinForm.Satisfies {n : ℕ} (K : KreinForm n) : BoundaryKind → Prop
   | .unitary => K.IsUnitary
   | .nonUnitary => K.IsNonUnitary
 
-/-- Holographic consistency: a de Sitter bulk (Λ > 0) is dual to a NON-unitary
-    boundary; an anti-de Sitter bulk (Λ < 0) to a unitary one. -/
-def DualityConsistent : BoundaryKind → ℝ → Prop
-  | .unitary, Λ => Λ < 0
-  | .nonUnitary, Λ => 0 < Λ
+/-- Which holographic scheme relates the boundary to the bulk. -/
+inductive HolographyScheme where
+  /-- Boundary CFT at future infinity ℐ⁺ (Strominger global dS/CFT). -/
+  | globalBoundary
+  /-- A unitary system on the observer's static-patch horizon (Banks–Fischler–Susskind). -/
+  | staticPatchHorizon
+deriving DecidableEq
 
-/-- A full holographic duality: a boundary form of a definite kind, a bulk de Sitter
-    metric, and the consistency relation tying boundary unitarity to the sign of Λ. -/
+/-- Holographic consistency between boundary unitarity and the sign of Λ, *per scheme*:
+
+    • global ℐ⁺ :  de Sitter (Λ>0) ↔ NON-unitary CFT;  anti-de Sitter (Λ<0) ↔ unitary CFT.
+    • static patch :  de Sitter (Λ>0) ↔ UNITARY horizon QM; the non-unitary pairing is
+      *excluded* — horizon holography is unitary by construction.
+
+    This is the physically grounded fix: the unitary, lab-realizable regime is the static
+    patch, not the global ℐ⁺ boundary (whose complex weights / ghosts make it non-unitary). -/
+def DualityConsistent : HolographyScheme → BoundaryKind → ℝ → Prop
+  | .globalBoundary,    .nonUnitary, Λ => 0 < Λ
+  | .globalBoundary,    .unitary,    Λ => Λ < 0
+  | .staticPatchHorizon, .unitary,   Λ => 0 < Λ
+  | .staticPatchHorizon, .nonUnitary, _ => False
+
+/-- A full holographic duality: a boundary form of a definite kind, the holographic
+    scheme, a bulk de Sitter metric, and the consistency relation tying them together. -/
 structure HolographicDuality (M : Type*) where
   /-- Boundary Hilbert-space dimension. -/
   n : ℕ
@@ -206,21 +222,142 @@ structure HolographicDuality (M : Type*) where
   kind : BoundaryKind
   /-- Proof the form realises the declared kind. -/
   boundary_kind : boundaryForm.Satisfies kind
+  /-- Which holographic scheme (global ℐ⁺ vs static-patch horizon). -/
+  scheme : HolographyScheme
   /-- The emergent bulk metric. -/
   metric : MetricField M
   /-- A de Sitter structure on it (so Λ > 0). -/
   bulk : DeSitterUniverse metric
-  /-- Boundary unitarity is consistent with the sign of Λ. -/
-  duality : DualityConsistent kind bulk.Λ
+  /-- Boundary unitarity is consistent with the sign of Λ, given the scheme. -/
+  duality : DualityConsistent scheme kind bulk.Λ
 
-/-- The heart of dS/CFT: a genuine de Sitter bulk forces a NON-unitary boundary. -/
-theorem HolographicDuality.boundary_nonUnitary (D : HolographicDuality M) :
+/-- In the GLOBAL ℐ⁺ scheme, a de Sitter bulk forces a NON-unitary boundary (Strominger). -/
+theorem HolographicDuality.boundary_nonUnitary (D : HolographicDuality M)
+    (hs : D.scheme = HolographyScheme.globalBoundary) :
     D.kind = BoundaryKind.nonUnitary := by
   cases hk : D.kind with
   | unitary =>
       have hd := D.duality
-      rw [hk] at hd
+      rw [hs, hk] at hd
       exact absurd (hd : D.bulk.Λ < 0) (not_lt.mpr D.bulk.pos_Λ.le)
   | nonUnitary => rfl
+
+/-- In the STATIC-PATCH scheme, the de Sitter bulk is dual to a UNITARY horizon system —
+    the physically grounded, lab-realizable regime (SYK / matrix QM on the horizon). -/
+theorem HolographicDuality.horizon_unitary (D : HolographicDuality M)
+    (hs : D.scheme = HolographyScheme.staticPatchHorizon) :
+    D.kind = BoundaryKind.unitary := by
+  cases hk : D.kind with
+  | unitary => rfl
+  | nonUnitary =>
+      have hd := D.duality
+      rw [hs, hk] at hd
+      exact hd.elim
+
+/-! ───────────────────────────────────────────────────────────────────────────
+    ## Grounding in real field theories
+
+    The non-unitary boundary is not a free parameter: the concrete dS₄ realisation is
+    the **Sp(N) model** — N anticommuting (Grassmann) scalars in 3D with Sp(N)
+    symmetry, dual to Vasiliev higher-spin gravity on dS₄ (Anninos–Hartman–Strominger).
+    It is the analytic continuation N → −N of the *unitary* O(N) vector model (dual to
+    higher-spin on AdS₄). The symplectic invariant makes its inner product indefinite
+    (→ `KreinForm`), and N → −N flips the central charge (→ imaginary/negative `c`).
+
+    A bulk scalar of mass m on dS_{d+1} maps to a boundary operator of dimension Δ
+    fixed by the **mass–dimension relation Δ(d − Δ) = m²ℓ²**. Heavy fields land in the
+    **principal series** (complex Δ = d/2 ± iμ); light fields in the **complementary
+    series** (real Δ). The lever below makes this precise and proves the threshold.
+    ─────────────────────────────────────────────────────────────────────────── -/
+
+/-- A boundary operator dual to a bulk scalar of mass² `m2` (in units ℓ = 1) on dS_{d+1}.
+    Its conformal weight `Δ` is fixed by the dS mass–dimension relation Δ(d − Δ) = m². -/
+structure BoundaryOperator where
+  /-- Boundary CFT dimension (3 for dS₄). -/
+  d : ℕ
+  /-- Bulk mass² in units of the dS radius, m²ℓ². -/
+  m2 : ℝ
+  /-- Conformal weight of the dual operator (generically complex). -/
+  Δ : ℂ
+  /-- The dS mass–dimension relation. -/
+  dim_relation : Δ * ((d : ℂ) - Δ) = (m2 : ℂ)
+
+/-- Principal series: complex conformal weight (the generic, non-unitary dS regime). -/
+def BoundaryOperator.IsPrincipalSeries (O : BoundaryOperator) : Prop := O.Δ.im ≠ 0
+
+/-- Complementary series: real conformal weight (light fields). -/
+def BoundaryOperator.IsComplementarySeries (O : BoundaryOperator) : Prop := O.Δ.im = 0
+
+/-- **Threshold theorem:** a heavy field (m²ℓ² > (d/2)²) is in the principal series —
+    its conformal weight is genuinely complex. This is the field-theory origin of the
+    complex dimensions in dS/CFT. -/
+theorem BoundaryOperator.principalSeries_of_heavy (O : BoundaryOperator)
+    (h : ((O.d : ℝ) / 2) ^ 2 < O.m2) : O.IsPrincipalSeries := by
+  intro hb
+  -- If Δ is real, the real part of the relation gives Δ.re (d − Δ.re) = m², which is
+  -- bounded above by (d/2)² — contradicting the heavy-mass hypothesis.
+  have hre : O.Δ.re * ((O.d : ℝ) - O.Δ.re) = O.m2 := by
+    have hr := congrArg Complex.re O.dim_relation
+    simpa [Complex.mul_re, Complex.sub_re, Complex.sub_im, Complex.natCast_re,
+      Complex.natCast_im, Complex.ofReal_re, hb] using hr
+  nlinarith [sq_nonneg ((O.d : ℝ) - 2 * O.Δ.re), hre, h]
+
+/-! ### Static-patch / horizon holography — the unitary, lab-realizable grounding
+
+    Banks–Fischler–Susskind: rather than a boundary CFT at ℐ⁺, the dS static patch is
+    described by a UNITARY, finite-dimensional quantum system on the observer's horizon
+    (à la SYK / matrix QM). Below: the static-patch metric with its causality (signature)
+    check, and a positive-definite horizon Gram operator (a genuinely unitary boundary). -/
+
+/-- Static-patch lapse u(r) = 1 − r²/R². Strictly positive inside the horizon (r < R). -/
+noncomputable def lapse (R r : ℝ) : ℝ := 1 - r ^ 2 / R ^ 2
+
+/-- dS static-patch metric components diag(−u, u⁻¹, r², r²) (θ = π/2 slice), u = lapse R r,
+    in coordinates (t, r, θ, φ):  ds² = −u dt² + u⁻¹ dr² + r² dΩ². -/
+noncomputable def staticPatchComp (R r : ℝ) : Comp :=
+  Matrix.diagonal ![-(lapse R r), (lapse R r)⁻¹, r ^ 2, r ^ 2]
+
+/-- Causality / signature check inside the horizon: g₀₀ < 0 and g₁₁, g₂₂, g₃₃ > 0, i.e. the
+    Lorentzian (-,+,+,+) signature. No Euclidean variation (all-positive g) can pass. -/
+theorem staticPatch_signature (R r : ℝ) (hr : 0 < r) (hu : 0 < lapse R r) :
+    staticPatchComp R r 0 0 < 0 ∧ 0 < staticPatchComp R r 1 1 ∧
+      0 < staticPatchComp R r 2 2 ∧ 0 < staticPatchComp R r 3 3 := by
+  unfold staticPatchComp
+  refine ⟨?_, ?_, ?_, ?_⟩ <;> rw [Matrix.diagonal_apply_eq]
+  · simpa using hu
+  · simpa using inv_pos.mpr hu
+  · simpa using pow_pos hr 2
+  · simpa using pow_pos hr 2
+
+/-- The unitary horizon Hilbert space: positive-definite identity Gram. A stand-in for a
+    finite-dimensional unitary system (SYK / matrix QM) on the static-patch horizon. -/
+noncomputable def horizonForm (n : ℕ) : KreinForm n where
+  G := 1
+  hermitian := Matrix.isHermitian_one
+  nondegenerate := by rw [Matrix.det_one]; exact isUnit_one
+
+/-- The horizon norm is the standard positive sum [v,v] = Σᵢ ‖vᵢ‖². -/
+theorem horizonForm_normSq (n : ℕ) (v : StateVec n) :
+    (horizonForm n).normSq v = ∑ i, Complex.normSq (v i) := by
+  unfold KreinForm.normSq horizonForm
+  have hsum : (∑ i, ∑ j, (starRingEnd ℂ) (v i) * (1 : Matrix (Fin n) (Fin n) ℂ) i j * v j)
+      = ∑ i, (starRingEnd ℂ) (v i) * v i := by
+    refine Finset.sum_congr rfl (fun i _ => ?_)
+    rw [Finset.sum_eq_single i]
+    · rw [Matrix.one_apply_eq, mul_one]
+    · intro j _ hj; rw [Matrix.one_apply_ne (Ne.symm hj), mul_zero, zero_mul]
+    · intro h; exact absurd (Finset.mem_univ i) h
+  rw [hsum, Complex.re_sum]
+  refine Finset.sum_congr rfl (fun i _ => ?_)
+  rw [mul_comm, Complex.mul_conj, Complex.ofReal_re]
+
+/-- The horizon boundary is genuinely UNITARY: positive-definite, no ghost states. -/
+theorem horizonForm_unitary (n : ℕ) : (horizonForm n).IsUnitary := by
+  intro v hv
+  rw [horizonForm_normSq]
+  obtain ⟨i, hi⟩ := Function.ne_iff.mp hv
+  simp only [Pi.zero_apply] at hi
+  exact Finset.sum_pos' (fun j _ => Complex.normSq_nonneg _)
+    ⟨i, Finset.mem_univ i, Complex.normSq_pos.mpr hi⟩
 
 end Ds4

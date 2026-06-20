@@ -173,17 +173,45 @@ theorem kreinEx_nonUnitary : kreinEx.IsNonUnitary := by
   unfold KreinForm.normSq
   simp [kreinEx, Fin.sum_univ_two, Matrix.diagonal_apply]
 
-/-- A complete dS/CFT duality: non-unitary ℂ² boundary ↔ de Sitter bulk (Λ = 3 > 0). -/
+/-- A global-ℐ⁺ dS/CFT duality: non-unitary ℂ² boundary ↔ de Sitter bulk (Λ = 3 > 0). -/
 noncomputable def dsDuality : HolographicDuality Real4D where
   n := 2
   boundaryForm := kreinEx
   kind := BoundaryKind.nonUnitary
   boundary_kind := kreinEx_nonUnitary
+  scheme := HolographyScheme.globalBoundary
   metric := flatMetric
   bulk := deSitter
   duality := deSitter.pos_Λ
 
-/-- The toggle works: this de Sitter duality is forced to have a non-unitary boundary. -/
-example : dsDuality.kind = BoundaryKind.nonUnitary := dsDuality.boundary_nonUnitary
+/-- The toggle works: in the global ℐ⁺ scheme this de Sitter duality is forced
+    to have a non-unitary boundary. -/
+example : dsDuality.kind = BoundaryKind.nonUnitary :=
+  dsDuality.boundary_nonUnitary rfl
+
+/-
+  ──────────────────────────────────────────────────────────────────────────────
+  The grounded, UNITARY alternative: static-patch / horizon holography.
+  ──────────────────────────────────────────────────────────────────────────────
+  Same de Sitter bulk (Λ > 0), but now a unitary finite-dimensional horizon system
+  (positive-definite identity Gram) — the physically realizable Banks–Fischler–
+  Susskind regime, with no ghost states.
+-/
+
+/-- A static-patch duality: UNITARY horizon QM (ℂ⁴) ↔ de Sitter bulk (Λ = 3 > 0). -/
+noncomputable def staticPatchDuality : HolographicDuality Real4D where
+  n := 4
+  boundaryForm := horizonForm 4
+  kind := BoundaryKind.unitary
+  boundary_kind := horizonForm_unitary 4
+  scheme := HolographyScheme.staticPatchHorizon
+  metric := flatMetric
+  bulk := deSitter
+  duality := deSitter.pos_Λ
+
+/-- The grounded toggle: a de Sitter bulk in the static-patch scheme is dual to a
+    genuinely UNITARY boundary. -/
+example : staticPatchDuality.kind = BoundaryKind.unitary :=
+  staticPatchDuality.horizon_unitary rfl
 
 end Ds4.Example

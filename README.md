@@ -50,12 +50,35 @@ Gram operator `G` (`KreinForm`), and classify it:
 - `IsUnitary`    — positive-definite: no negative-norm states (AdS-like),
 - `IsNonUnitary` — a negative-norm "ghost" state exists (dS-like / Krein).
 
-`BoundaryKind` (`unitary | nonUnitary`) is the toggle; `DualityConsistent kind Λ` ties it to
-the bulk: `nonUnitary ↔ Λ > 0`, `unitary ↔ Λ < 0`. The payoff theorem
-`HolographicDuality.boundary_nonUnitary` proves that **a genuine de Sitter bulk (Λ > 0)
-forces a non-unitary boundary** — the defining feature of dS/CFT. The worked `dsDuality`
-([Example.lean](Ds4Verification/Example.lean)) instantiates this with `G = diag(1,−1)` and a
-proven negative-norm state.
+`BoundaryKind` (`unitary | nonUnitary`) is the toggle. Because the dS↔unitarity relation
+depends on *how* you do holography, consistency is keyed by a `HolographyScheme`:
+
+| Scheme | de Sitter (Λ > 0) dual | Physics |
+|--------|------------------------|---------|
+| `globalBoundary` (ℐ⁺) | **non-unitary** CFT | Strominger dS/CFT — complex weights, ghosts |
+| `staticPatchHorizon` | **unitary** finite-dim QM | Banks–Fischler–Susskind / SYK — lab-realizable |
+
+Two payoff theorems make this precise:
+- `HolographicDuality.boundary_nonUnitary` — in the global ℐ⁺ scheme, a de Sitter bulk
+  **forces a non-unitary boundary** (the defining feature of standard dS/CFT). Worked
+  example `dsDuality`: `G = diag(1,−1)` with a proven negative-norm ghost state.
+- `HolographicDuality.horizon_unitary` — in the static-patch scheme, a de Sitter bulk is
+  dual to a **genuinely unitary** boundary. Worked example `staticPatchDuality`: the
+  positive-definite horizon Gram operator (`horizonForm`), proven `IsUnitary`.
+
+### Grounding in real field theories
+
+The levers are tied to concrete physics, not free parameters:
+
+- **Mass–dimension relation** `Δ(d−Δ) = m²ℓ²` (`BoundaryOperator`): the theorem
+  `principalSeries_of_heavy` proves a heavy field (`m²ℓ² > (d/2)²`) has a genuinely complex
+  conformal weight (principal series) — the field-theory origin of dS/CFT's complex dimensions.
+- **Sp(N) model** (Anninos–Hartman–Strominger): the `N → −N` continuation of the unitary
+  O(N) vector model gives the non-unitary boundary (indefinite Gram = `KreinForm`); this is
+  why the `globalBoundary` branch is non-unitary.
+- **Static-patch metric** `staticPatchComp` (`ds² = −u dt² + u⁻¹ dr² + r² dΩ²`, `u = 1−r²/R²`):
+  `staticPatch_signature` proves the causality check `g₀₀<0, gᵢᵢ>0` inside the horizon —
+  the physically grounded, unitary alternative to the global ℐ⁺ boundary.
 
 ## Layout
 
@@ -130,10 +153,14 @@ if the module type-checks **and** contains no `sorry`.
 - [x] Replace `ricci_curvature_flatness : True` with a genuine `Ric = Λ • g` relation (+ `R = 4Λ`).
 - [x] Enforce a Lorentzian `(-,+,+,+)` signature constraint (Sylvester congruence to η).
 - [x] Boundary unitarity lever: Krein/non-unitary boundary + dS/CFT-vs-AdS/CFT toggle.
+- [x] Holography-scheme toggle: global ℐ⁺ (non-unitary) vs static-patch horizon (unitary).
+- [x] Complex conformal weights via the mass–dimension relation (principal-series threshold).
+- [x] Static-patch metric with an inside-horizon causality (signature) check.
 - [ ] **Derive** `Ric` from `g` via Christoffel symbols, so the Einstein equation is checked
   against the metric's actual curvature rather than a postulated Ricci tensor.
-- [ ] Complex conformal weights (principal series) + imaginary central charge on the boundary.
-- [ ] A concrete free-scalar-field boundary theory on ℝ³.
+- [ ] Full Sylvester congruence proof for the static-patch metric (not just the sign check).
+- [ ] Imaginary central charge from the O(N)→Sp(N), `N → −N` continuation.
+- [ ] A concrete free-scalar-field / SYK boundary theory.
 - [ ] Convergence metrics / structured logging for the generator loop.
 
 ## Build status
@@ -143,6 +170,9 @@ Compiled and verified against **Lean 4.15.0 + Mathlib v4.15.0** (Windows):
 - `lake build` → Core + both examples compile, **no `sorry`**.
 - Boundary lever verified: `dsDuality` (non-unitary `G = diag(1,−1)` ↔ Λ = 3 de Sitter bulk)
   compiles, and `HolographicDuality.boundary_nonUnitary` proves the dS bulk forces it.
+- Grounded unitary alternative verified: `staticPatchDuality` (unitary horizon Gram ↔ Λ = 3
+  bulk) compiles, with `horizon_unitary`, `horizonForm_unitary`, `staticPatch_signature`, and
+  the `principalSeries_of_heavy` threshold all proven.
 - `lake build Ds4Verification.Generated` → a generated state-dependent-Λ candidate verifies.
 - **Negative control:** a hypothesis with Λ = −1 is *rejected* (`positivity` fails on
   `pos_Λ`) — confirming the check is non-vacuous (valid physics compiles, invalid is refused).
