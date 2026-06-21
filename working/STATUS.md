@@ -33,6 +33,7 @@ make "locality" and "CPT/shadow positivity" decidable predicates rather than pro
 | `ghostKrein_nonUnitary`, `boundary_not_unitary` (`Lagrangian`) | the symplectic Gram `G = iΩ` has a **proved ghost** `(1,i)`, so the Lagrangian *carries* a non-unitary boundary (not just seeds it) |
 | `ghostGram_eq_iOmega` (`Lagrangian`) | the boundary Krein form is exactly `iΩ` — non-unitarity **lifted from Ω**, not posited |
 | `sp_covariant` (`SymmetryBreaking`), `isSymplecticVacuum_congr`, `isUnbroken_one/_mul`, `deltaOmega_OmegaMin`, `isUnbrokenGen_OmegaMin_iff`, `identity_isGoldstone` (`ParentTheory`) | **Ω = order parameter of `GL(N)→Sp(N)` SSB**: action preserves the symplectic vacuum manifold; the stabilizer (Sp) is a submonoid; for N=2 the breaking is EXACT — `δΩ = (tr X)·Ω`, so `sp(2)`= traceless (`sl₂`, dim 3) and the **single Goldstone is the dilation** `X∝1` (`dim gl(2)−dim sp(2)=1`) |
+| `potentialV_nonneg`, `OmegaMin_sq`, `potentialV_OmegaMin`, `OmegaMin_isMinimum`, `potentialV_eq_zero_iff`, `isSymplecticVacuum_of_potentialV_zero` (`ParentAction`) | **dynamical-Ω potential**: `V(Ω)=‖Ωᵀ+Ω‖²+‖Ω²+𝟙‖² ≥ 0`, with `V=0 ⟺ Ωᵀ=−Ω ∧ Ω²=−𝟙` (the symplectic/complex-structure vacuum manifold); `OmegaMin` is a global minimum, and every `V=0` config is a symplectic vacuum — so Ω emerges as a VEV, not a background |
 
 ## B. MODELING CONVENTION (faithful, but a choice — the zero set is the physics)
 

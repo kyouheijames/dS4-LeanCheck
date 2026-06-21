@@ -23,11 +23,12 @@ Honest ledger of proved / convention / out-of-scope: see `STATUS.md` (incl. §D,
 
 ## Open / NOT done (the genuinely hard parts, correctly isolated)
 
-1. **Interacting `γ_T(s)`** — CAS, not Lean. **Exact sector now computed**
-   (`driver/algebra/large_n_selfenergy.py`): free χ propagator coeff, χ² bubble + FT, induced σ
-   propagator (Δσ=2s), η_χ=0 (all exact). The spin-2 broken-current integral giving `C_T(s,d)`
-   is set up explicitly but left SYMBOLIC — evaluating it (or cross-checking vs long-range-CFT
-   literature) is the remaining research step; `s→1 ⇒ γ_T→0` rail enforced. Do NOT fabricate.
+1. **Interacting `γ_T(s)`** — CAS, not Lean. **Exact sector computed** + **spin-2 extraction set
+   up** (`large_n_selfenergy.py`, `cT_spin2.py`): free χ propagator, χ² bubble+FT, induced σ
+   propagator (Δσ=2s), η_χ=0 (all exact); `γ_{ℓ=2}` set up via the Lorentzian inversion formula
+   (dDisc of σ-exchange ⟨χχχχ⟩, spin-2 projection) with exact inputs. The remaining spinning-
+   integral / inversion residue is the open `C_T` coefficient — needs evaluation + literature
+   cross-check (anchors listed). `s→1` rail enforced. Coefficient NOT fabricated.
 2. **s-averaging stays shadow-positive** — SDPB, not Lean. Handoff scaffold in `driver/sdpb/`.
    `ModelP.expectedGammaT` states `⟨γ_T⟩=∫`; only the bootstrap can decide it. The actual test
    of the conjecture.
@@ -35,10 +36,11 @@ Honest ledger of proved / convention / out-of-scope: see `STATUS.md` (incl. §D,
    oscillation freq μ). The overall amplitude `A_s` and the oscillation size `~e^{−πμ}` need the
    late-time wavefunction / cosmological-bootstrap calc. The `n_s=4−2s, s≈1.52, Axis-of-Evil`
    claims from the dS-XFT pitch are unverified / postdictions — see `STATUS.md §D`.
-4. ~~Parent SSB theory skeleton~~ — **DONE** (`ParentTheory.lean`): vacuum manifold +
-   action-preserves-it + Sp submonoid + EXACT Goldstone structure for N=2 (`δΩ=(tr X)·Ω`, one
-   Goldstone = the dilation). Remaining extension (optional): the dynamical-Ω kinetic term +
-   `V(Ω)` as an actual action, and Goldstone counting for general even N.
+4. ~~Parent SSB theory skeleton~~ — **DONE** (`ParentTheory.lean` + `ParentAction.lean`):
+   vacuum manifold + action-preserves-it + Sp submonoid + EXACT Goldstone structure for N=2;
+   AND the dynamical-Ω potential `V(Ω)` with `V=0 ⟺` symplectic vacuum, `OmegaMin` a global
+   minimum, `canonicalParent` bundling the action. Remaining (optional): Ω kinetic term as a
+   field-theory term, Goldstone counting for general even N, V's full GL-orbit structure.
 5. **Loop integration** — `agent_loop_patch.md` + `candidate_schema.md` describe wiring the
    WorthInvestigating filter into `driver/agent_loop.py`. Not applied to the driver yet.
 
