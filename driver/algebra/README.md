@@ -12,6 +12,7 @@ the evaluated number comes back to Lean as certified data.
 |------|------|
 | `conformal_integrals.py` | Exact position-space conformal-integral toolbox — the one-loop bubble `U(a,b)`, Symanzik star-triangle (uniqueness), free/HS dimensions. Every function is an exact Gamma-function identity sympy evaluates symbolically; nothing is fit. |
 | `long_range_gamma.py` | The Part 2 derivation: LO dimensions, the long-range non-renormalization result `γ_φ = 0`, the induced σ propagator, and the `γ_T(s)` extraction with the `s→1` conservation rail. Emits the JSON handshake. |
+| `large_n_selfenergy.py` | The **exact** large-N self-energy sector: free χ propagator coefficient via the d-dim FT of `|p|^{-2s}`, the χ² bubble Π(x) and its FT Π(p)∝|p|^{d-4s}, the induced σ propagator (Δσ=2s), and η_χ=0. Sets up — explicitly, but does **not** fake — the spin-2 broken-current integral whose value is `C_T(s,d)`; enforces the `s→1` rail. This is "starting the real computation": the computable sector is computed exactly; the one remaining conformal integral is flagged for evaluation / literature cross-check. |
 | `requirements.txt` | `sympy`. |
 
 ## Run

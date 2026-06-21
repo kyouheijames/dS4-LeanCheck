@@ -32,6 +32,7 @@ make "locality" and "CPT/shadow positivity" decidable predicates rather than pro
 | `cptExact_iff_local`, `cptExact_iff_conserved`, `locality_cpt_equiv` (`CPTLocality`) | **CPT-break = locality-break = non-conservation**, one shared `ε`; the five conditions are *mutually equivalent* (machine-checked non-contradiction) |
 | `ghostKrein_nonUnitary`, `boundary_not_unitary` (`Lagrangian`) | the symplectic Gram `G = iΩ` has a **proved ghost** `(1,i)`, so the Lagrangian *carries* a non-unitary boundary (not just seeds it) |
 | `ghostGram_eq_iOmega` (`Lagrangian`) | the boundary Krein form is exactly `iΩ` — non-unitarity **lifted from Ω**, not posited |
+| `sp_covariant` (`SymmetryBreaking`), `isSymplecticVacuum_congr`, `isUnbroken_one/_mul`, `deltaOmega_OmegaMin`, `isUnbrokenGen_OmegaMin_iff`, `identity_isGoldstone` (`ParentTheory`) | **Ω = order parameter of `GL(N)→Sp(N)` SSB**: action preserves the symplectic vacuum manifold; the stabilizer (Sp) is a submonoid; for N=2 the breaking is EXACT — `δΩ = (tr X)·Ω`, so `sp(2)`= traceless (`sl₂`, dim 3) and the **single Goldstone is the dilation** `X∝1` (`dim gl(2)−dim sp(2)=1`) |
 
 ## B. MODELING CONVENTION (faithful, but a choice — the zero set is the physics)
 
