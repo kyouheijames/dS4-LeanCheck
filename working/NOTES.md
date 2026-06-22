@@ -115,6 +115,24 @@ Honest ledger of proved / convention / out-of-scope: see `STATUS.md` (incl. §D,
    Models at Large N"**. No physical d=3 number shipped until that check closes. NET: the conservation
    question is now a concrete literature check, not a mystery; discipline held (kinematic solid,
    physical gated on an unverified input).
+   **CLOSED by the literature — with a RETRACTION (`lr_vector_paper.py`).** Read the definitive
+   reference, **Chai–Goykhman–Sinha arXiv:2107.08052 "Long-Range Vector Models at Large N"** — it
+   IS our model. Findings: (CONFIRMED) the long-range fixed point is, in their words, "characterized
+   by the LACK of a local stress-energy tensor"; the would-be T is non-conserved (γ_T≠0) in the
+   long-range regime and conserved only at the crossover s*=1−η_SR/2 — EXACTLY our "locality is a
+   quantum observable that breaks" thesis, now published rigorous physics. γ_φ=0 exactly (matches
+   our Lean FreeSector). Their **physical** γ_T (eq. 7.32, conformal perturbation theory):
+   γ_T=(2α(d)δ/Γ(d/2))·γ_φ̂, δ=(s*−s)/2 — ∝(s*−s) [vanishes AT the crossover] and ∝γ_φ̂ [=0 when
+   short-range is free, i.e. ALL of d=4]. (RETRACTION) our inversion engine computes the GENERIC
+   Cardona–Sen scalar-exchange γ, which is NOT this physical γ_T: paper γ_T(d=4)=0 but our engine
+   gives −0.666(s−1)²; paper vanishes at s*≈1, ours at the dDisc-zero s=0.75. So the engine's d=4
+   "−0.0219" and the d=3 generic values are a correct generic-exchange calc applied to the WRONG
+   assembly — not the physical stress-tensor anomalous dimension. The "C²=40/π²" crossover
+   prediction (built on the false γ_T=C²·γ_kin) is WITHDRAWN. (VERIFIED datum) the paper's leading
+   OPE coefficient eq.(5.3) gives **N·C²_φφσ(s=1,d=3)=4/π²** (≈0.4053) — implemented and matched to
+   1e-12. The literature cross-check did exactly its job: it caught a plausible-but-wrong program.
+   Net: thesis vindicated by published work; our physical γ_T is eq.(7.32); generic engine kept as
+   a validated Cardona–Sen tool but no longer claimed as the physical long-range γ_T.
 2. **s-averaging stays shadow-positive** — SDPB, not Lean. Handoff scaffold in `driver/sdpb/`.
    `ModelP.expectedGammaT` states `⟨γ_T⟩=∫`; only the bootstrap can decide it. The actual test
    of the conjecture.
