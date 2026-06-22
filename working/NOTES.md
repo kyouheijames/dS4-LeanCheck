@@ -63,7 +63,15 @@ Honest ledger of proved / convention / out-of-scope: see `STATUS.md` (incl. §D,
    refutation). Concrete: `C_T(1.4, d=4) = −0.0219/N`. A literature-correct, gate-passing C_T — but
    in **d=4 (dS₅), not physical d=3**. d=3 lacks closed-form blocks ⇒ needs the paper's general-d
    Mellin treatment (Sec. 4) incl. the finite-β poles the authors neglect — the real d=3 frontier.
-2. **s-averaging stays shadow-positive** — SDPB, not Lean. Handoff scaffold in `driver/sdpb/`.
+   **d=3 Mellin attempt (`cT_mellin.py`, eq. 4.18, s=n poles only):** evaluated — and it DEMONSTRATES
+   the incompleteness rather than yielding a number. In d=3 it carries a spurious singularity across
+   s=1 (`+0.27`@0.95, `−0.99`@1.05 — NO conservation, G1 fails); in d=4 it disagrees with the complete
+   eq.(3.30) by the neglected poles (`s=1.2`: `+0.015` vs correct `−0.0215`, even wrong sign). So the
+   **physical d=3 `C_T` is NOT given by the paper's closed forms** — it requires the general-d
+   completion (poles `s=(β−Δ+J−τ)/2−1+n`) the authors assembled only for d=4. That extension is the
+   genuine open frontier — rigorously located from the actual paper, not faked. Net: verified
+   gate-passing `C_T(s,d=4)`; physical d=3 precisely characterized as open (needs the d=3 completion).
+2. **s-averaging sta     ys shadow-positive** — SDPB, not Lean. Handoff scaffold in `driver/sdpb/`.
    `ModelP.expectedGammaT` states `⟨γ_T⟩=∫`; only the bootstrap can decide it. The actual test
    of the conjecture.
 3. **Cosmology amplitude** — `PrincipalSpectrum` fixes the scaling *structure* (tilt=2ε,
