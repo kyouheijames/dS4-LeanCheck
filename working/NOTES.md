@@ -28,10 +28,16 @@ Honest ledger of proved / convention / out-of-scope: see `STATUS.md` (incl. §D,
    working); and the **large-spin crack** (`cT_largespin.py`): the would-be T = double-twist
    `[χχ]_{0,2}`, its σ-exchange γ has rigorous falloff `1/ℓ^{2s}` and exact kinematic coefficient
    `γ_kin(s,d)`. Gating it pinned the one remaining unknown: the χχσ OPE factor `A(s,d)` (∝1/N),
-   which G1 forces to satisfy `A(1,d)=0` (free higher-spin symmetry). So
-   `C_T(s,d) = −A(s,d)·γ_kin(s,d)/2^{2s}` at ℓ=2 — structure + constraint fixed; `A(s,d)` itself
-   needs the σ-normalization assembly + a literature cross-check. **No coefficient fabricated.**
-   (Also fixed: the `freeStressTensor` sign — physical `Δ_T=2Δχ+2=d−2(s-1)`, so free `γ_T=2(1−s)`,
+   which G1 forces to satisfy `A(1,d)=0` (free higher-spin symmetry).
+   **`A(s,d)` ASSEMBLED** (`cT_assemble.py`): the χχσ vertex is conformally unique
+   (`2Δχ+Δσ=d`), so `A=κ/N·C_χ²·C_σ·V_st²` from the exact star-triangle + induced-σ data.
+   Result: `A(s=1,d) ∝ sin(πd/2)` — vanishes at EVEN d but NOT at d=3 (`A(1,3)=2/π²`). Gated, the
+   full candidate is **REJECTED** (G1, G4 fail at d=3). **Honest diagnosis:** the leading
+   large-spin form `γ_kin/ℓ^{2s}` at ℓ=2 cannot reproduce the s=1 free-HS cancellation in odd d —
+   that is a finite-spin (6j) effect. So `C_T=γ_{0,2}` needs the full **6j / inversion residue at
+   ℓ=2** (+ literature κ), not the large-spin shortcut. Frontier now precisely located; ingredients
+   (`γ_kin`, `A`) and the gate harness are in place. We did NOT force-fit A. No coefficient faked.
+   (Also fixed: the `freeStressTensor` sign — physical `Δ_T=2Δχ+2=d−2(s-1)`, free `γ_T=2(1−s)`,
    below the bound for s>1, consistent with non-unitarity.)
 2. **s-averaging stays shadow-positive** — SDPB, not Lean. Handoff scaffold in `driver/sdpb/`.
    `ModelP.expectedGammaT` states `⟨γ_T⟩=∫`; only the bootstrap can decide it. The actual test
