@@ -35,9 +35,23 @@ dictionary + dS higher-spin holography; the frontier (Einstein limit) flagged as
 - NOT established: that the lifting leaves a clean Einstein-graviton limit. That is the genuine open
   problem (Einstein gravity from a broken-HS vector model) — promising mechanism, unproven endpoint.
 
+## The spin test (γ_ℓ) — and it cuts AGAINST easy Einstein growth (`gamma_spin.py`)
+The leading-twist [χχ]_{0,ℓ} ARE the single-trace HS currents J_ℓ = χ∂^ℓχ, dual to the bulk spin-ℓ
+gauge fields (graviton = J_2). So γ_ℓ = the spin-ℓ gauge-field mass². Computed (generic σ-exchange,
+validated engine):
+   γ_ℓ ~ const / ℓ^{2s}  (confirmed: γ_ℓ·ℓ^{2s}→const in both d=3,4) — γ_ℓ DECREASES with ℓ.
+Reading: the **graviton (ℓ=2) is the MOST broken / heaviest** HS gauge field; higher spins become
+asymptotically CONSERVED (massless) at large ℓ (universal lightcone behaviour). This is the OPPOSITE
+of what isolating Einstein gravity needs (spin-2 light, HS heavy). So the "lift the tower" hope does
+NOT hold here — the long-range/broken phase keeps the graviton heaviest and the tower asymptotically
+free. Honest caveat: generic-exchange magnitudes, but the DECAY trend (the gravity-relevant content)
+is universal, so robust. Net: this setup is genuinely (higher-spin) gravity, but does NOT naturally
+grow to an Einstein graviton — a real, computed obstruction, not a vague gap.
+
 ## Net
 It IS gravity — the boundary of de Sitter HIGHER-SPIN gravity — with γ_T the graviton mass and
 locality-SSB the breaking of the gravitational gauge symmetry. Growth toward EINSTEIN gravity =
-lift the HS tower; the breaking mechanism is the right kind, the clean spin-2 limit is the frontier.
+lift the HS tower; the breaking mechanism is the right kind, BUT the spin test (γ_ℓ~1/ℓ^{2s}, graviton
+heaviest) shows this vector-model setup does the OPPOSITE — Einstein isolation is obstructed here.
 Refs: Klebanov–Polyakov 2002; Anninos–Denef–Harlow (dS/CFT, Sp(N)); Maldacena–Zhiboedov 2011/2012
 (weakly broken HS); Anninos–Hartman–Strominger. (Conceptual note; nothing here is computed/proved.)
