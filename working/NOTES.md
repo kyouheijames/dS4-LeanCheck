@@ -45,6 +45,15 @@ Honest ledger of proved / convention / out-of-scope: see `STATUS.md` (incl. §D,
    Ric-trap). `gate_candidate(...)` validates any VERIFIED closed form the instant it is supplied
    (refs: LPRS 2018, Cardona–Sen 2018, Caron-Huot 2017, Lang–Ruhl). The one irreducible look-up /
    focused-calc step — deliberately not faked.
+   **UPDATE — a gate-passing candidate now exists** (`cT_cardona_sen.py`): a Cardona–Sen closed
+   form was supplied (paste, UNVERIFIED). Implemented faithfully (the `W` core is a terminating
+   ₃F₂, 3-term sum cross-checked vs `hyperexpand`), assembled with our `C²_{χχσ}` and exact dims.
+   **Gate verdict:** in **d=3 (our case) it passes every applicable gate** — G1 `lim_{s→1}γ=0`
+   (RIGOROUS; the large-spin form failed this), G3 reality, G4 sign(<0). In d=4 it passes G1,G3
+   and fails the HEURISTIC G4 (sign >0 — a d-dependent prediction, not a disqualifier). Concrete
+   output (up to κ/N): `γ(0,2)(s=1.4, d=3) ≈ −4.0e-4·κ/N`. **NOT 'verified'** — gates are necessary
+   not sufficient, provenance is an unverified paste; needs a real literature cross-check + κ. But
+   the frontier moved: from "no candidate" to "a candidate consistent with all rigorous limits".
 2. **s-averaging stays shadow-positive** — SDPB, not Lean. Handoff scaffold in `driver/sdpb/`.
    `ModelP.expectedGammaT` states `⟨γ_T⟩=∫`; only the bootstrap can decide it. The actual test
    of the conjecture.

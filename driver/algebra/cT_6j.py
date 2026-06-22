@@ -62,6 +62,43 @@ def shadow_check(dim=d, kin=s):
     return sp.simplify(2 * kin - (dim - 2 * delta_chi(dim, kin)))
 
 
+# --- confirmed structure (from the very-well-poised ₇F₆(1) form) -------------------------
+#
+# The 6j is  N · ₇F₆[a1..a7; b1..b6; 1]  (very-well-poised). With
+#   exchange σ:  Δ=Δσ=2s, J=0     ⇒ h_σ  = (Δσ−0)/2 = s,        h̄_σ  = (Δσ+0)/2 = s
+#   inversion [χχ]_{0,2}: Δ'=2Δχ+2, J'=2 ⇒ h' = (Δ'−2)/2 = Δχ,   h̄' = (Δ'+2)/2 = Δχ+2
+#   external Δφ = Δχ
+# The a_i,b_j are linear combinations of {Δφ, h_σ, h̄_σ, h', h̄'} + shadow reflections (Δ→d−Δ);
+# the b_j are fixed by the well-poised relations a1+1 = a2+b1 = a3+b2 = …  γ(n,J') is the
+# RESIDUE of the 6j at the double-twist pole Δ' = 2Δφ + 2n + J'.
+#
+# EVALUABLE SPECIAL POINTS (half-integer reduction: Δφ half-integer ⇒ ₇F₆ terminates to a
+# finite ₄F₃/₃F₂ sum, which sympy CAN evaluate exactly):
+#   • d=4, s=3/2 : Δχ = 2−s = 1/2 (half-integer!), Δσ=3, super-renorm (s>d/4=1). ⇒ TERMINATES.
+#     This is the first place a fully-verifiable C_T can be obtained (dS₅ boundary).
+#   • d=4, s=1/2 : Δχ = 3/2 (half-integer) ⇒ terminates too.
+#   In our physical d=3, Δχ=(3−2s)/2 is half-integer only for integer s (s=1 is the free point),
+#   so d=3 needs the non-terminating ₇F₆ — hence the d=4 terminating point is the right first
+#   verifiable target.
+
+def h_hbar(Delta, J):
+    """Conformal (h, h̄) = ((Δ−J)/2, (Δ+J)/2)."""
+    return (Delta - J) / 2, (Delta + J) / 2
+
+
+def doubletwist_pole(dim=d, kin=s, n=0, spin=2):
+    """The pole location Δ' = 2Δχ + 2n + J' whose residue is γ_{n,J'}."""
+    return 2 * delta_chi(dim, kin) + 2 * n + spin
+
+
+def seven_F_six(a_params, b_params, prefactor=1):
+    """Build the very-well-poised ₇F₆(1) once the 7 numerator + 6 denominator params are
+    supplied (as the VERIFIED linear combinations of Δφ,h,h̄,h',h̄'). Returns a sympy expr;
+    `hyperexpand` evaluates it (and terminates it at half-integer Δφ). The a_i,b_j themselves
+    are the one input still needed from a verified source — not guessed here."""
+    return prefactor * sp.hyper(a_params, b_params, sp.Integer(1))
+
+
 def gate_candidate(C_T_expr, label="supplied 6j value"):
     """Run a VERIFIED closed form C_T(s,d) (the ℓ=2 residue) through the full gate harness.
     Pass an expression in symbols s, d; it is treated as γ_{0,2} and gated."""
