@@ -97,3 +97,24 @@ if __name__ == "__main__":
     print("   ⇒ locality-breaking (γ_T) is literally mediated by a negative-norm mode. This is a")
     print("   literature-backed equation form of the locality↔Krein/non-unitarity thesis — not an")
     print("   analogy. It is the honest physical anchor for the Ω-SSB / ghost question.")
+
+    print("\n=== α(d) from ref [11] (Behan–Rastelli–Rychkov–Zan 1703.05325) ===")
+    print("Fixed-point coupling g*² = δ/β₃ (their eq. 2.25) ⇒ α(d) = 1/β₃(d). β₃ = cubic")
+    print("beta-function coeff of the σχ flow. β₃>0 (proved, d=2,3) ⇒ real fixed point ⇒ α>0.")
+    beta3 = {2: mp.mpf('1.268404'), 3: mp.mpf('12.26')}   # eq. 2.19 (d=2), eq. 2.24 (d=3); N=1 Ising
+    for d_t in (2, 3):
+        a = 1 / beta3[d_t]
+        print(f"  d={d_t}:  β₃ = {mp.nstr(beta3[d_t],6)}  ⇒  α({d_t}) = 1/β₃ = {mp.nstr(a,5)}")
+    print("\nSIGN RESULT (the physical headline): α>0, δ>0, γ_φ̂>0, Γ(d/2)>0  ⇒  γ_T = (2αδ/Γ(d/2))γ_φ̂")
+    print("  is POSITIVE ⇒ Δ_T = d + γ_T > d, the UNITARY direction (locality-breaking is 'soft').")
+    print("  Our retracted generic engine gave γ_T<0 — OPPOSITE sign, confirming it was wrong.")
+    print("  The non-unitarity is carried separately by the χ ghost (C_χ<0), NOT by γ_T pushing")
+    print("  below the spin-2 bound.")
+    # d=3 Ising illustration of the magnitude (N=1, η_Ising≈0.03627 ⇒ γ_φ̂=η/2):
+    eta_ising3 = mp.mpf('0.036298'); gphi = eta_ising3 / 2
+    slope = 2 * (1 / beta3[3]) / G(mp.mpf(3) / 2) * gphi
+    print(f"\n  d=3 ISING illustration: γ_T ≈ {mp.nstr(slope,4)}·δ  (δ=(s*−s)/2), small & positive.")
+    print("  CAVEAT: β₃=12.26 is the N=1 ISING value (3d-Ising bootstrap). OUR model is large-N")
+    print("  O(N) (and symplectic Sp(N)); its β₃ differs and is NOT in either paper — it needs the")
+    print("  large-N σσσσ integral (BRRZ eq. 2.18/2.20 at large N). So α(3)=0.0816 is ISING, not")
+    print("  our value. We do NOT misreport it as the large-N number.")

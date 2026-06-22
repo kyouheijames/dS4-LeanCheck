@@ -145,6 +145,19 @@ Honest ledger of proved / convention / out-of-scope: see `STATUS.md` (incl. §D,
    a literature-backed physical anchor for the Ω-SSB / Krein-ghost story. (`lr_vector_paper.py`.)
    NEXT decision: (a) fetch ref [11] for α(d) to get the absolute near-s* γ_T number, or (b) build
    the conjecture test on this ghost-χ structure (the more direct route to the SSB↔ghost question).
+   **Did BOTH.** (b) `CORRESPONDENCE.md`: tested Ω↔λ*, G=iΩ↔C_χ — Ω↔λ* is WRONG (Ω=Sp(N)
+   field-space param that *creates* the ghost; λ*=locality coupling that *activates* it; and the
+   O(N) paper has no Ω), G=iΩ↔C_χ<0 is a PARTIAL/structural match (both negative-norm, distinct
+   origins). The match that holds: our ε ↔ paper's δ/λ*²/γ_T (locality-breaking strength). Caveat
+   logged: the paper is ORTHOGONAL O(N); our Sp(N)/Ω is unvalidated by it. "SSB cures ghost"
+   refined to "order parameter switches the ghost coupled↔decoupled across the crossover" (a
+   decoupling, not Higgs absorption). (a) α(d): ref [11] gives g*²=δ/β₃ (eq. 2.25) ⇒ **α(d)=1/β₃**,
+   with **β₃>0 proved** (real fixed point) ⇒ **γ_T>0** (eq. 7.32) — Δ_T>d, the UNITARY direction;
+   locality-breaking is "soft", non-unitarity carried separately by the χ ghost. (Our retracted
+   engine gave γ_T<0 — opposite sign, a 2nd confirmation it was the wrong object.) Numbers:
+   β₃(d=3)=12.26 ⇒ α(3)=0.0816, β₃(d=2)=1.2684 ⇒ α(2)=0.788 — but these are **N=1 ISING** (3d-Ising
+   bootstrap); OUR large-N O(N)/Sp(N) β₃ differs and is in NEITHER paper (needs the large-N σσσσ
+   integral). So α(3)=0.0816 is NOT our value — not misreported as such. (`lr_vector_paper.py`.)
 2. **s-averaging stays shadow-positive** — SDPB, not Lean. Handoff scaffold in `driver/sdpb/`.
    `ModelP.expectedGammaT` states `⟨γ_T⟩=∫`; only the bootstrap can decide it. The actual test
    of the conjecture.
