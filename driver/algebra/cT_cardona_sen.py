@@ -1,5 +1,13 @@
 """cT_cardona_sen.py — test the SUPPLIED Cardona–Sen closed form for C_T against the gates.
 
+*** REFUTED — see cT_real_4d.py. ***  The closed form tested below does NOT match the actual
+Cardona–Sen paper (arXiv:1806.10919): the paper's result is a ₄F₃ in the conformal spin β with
+prefactor Γ(Δ)/Γ(Δ/2)², not a ₃F₂ with a "−ℓ" terminating parameter and Γ(Δσ/2)⁴. The pasted
+form PASSED the d=3 gates anyway (a false positive — exactly why gates are necessary, not
+sufficient) and has the WRONG sign in d=4 vs the real formula. Kept as a record of the
+gate-test; the genuine literature-based computation is in cT_real_4d.py.
+
+
 A closed form for γ(0,ℓ=2) was supplied (pasted, provenance = an LLM/source — UNVERIFIED). Per the
 project discipline we do NOT trust it; we implement it faithfully and let the gate harness decide.
 A pass is necessary, not sufficient (gates can't catch every wrong formula) — so a pass is reported

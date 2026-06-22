@@ -51,9 +51,18 @@ Honest ledger of proved / convention / out-of-scope: see `STATUS.md` (incl. §D,
    **Gate verdict:** in **d=3 (our case) it passes every applicable gate** — G1 `lim_{s→1}γ=0`
    (RIGOROUS; the large-spin form failed this), G3 reality, G4 sign(<0). In d=4 it passes G1,G3
    and fails the HEURISTIC G4 (sign >0 — a d-dependent prediction, not a disqualifier). Concrete
-   output (up to κ/N): `γ(0,2)(s=1.4, d=3) ≈ −4.0e-4·κ/N`. **NOT 'verified'** — gates are necessary
-   not sufficient, provenance is an unverified paste; needs a real literature cross-check + κ. But
-   the frontier moved: from "no candidate" to "a candidate consistent with all rigorous limits".
+   output (up to κ/N): `γ(0,2)(s=1.4, d=3) ≈ −4.0e-4·κ/N`.
+   **LITERATURE CROSS-CHECK (arXiv:1806.10919 TeX in `papers/`) — the pasted ₃F₂ is REFUTED.** It
+   does NOT match Cardona–Sen (paper = ₄F₃ in conformal spin β, prefactor Γ(Δ)/Γ(Δ/2)²; no "−ℓ"
+   termination). It passed the d=3 gates anyway = a textbook FALSE POSITIVE — gates necessary, not
+   sufficient; the discipline of not calling gate-pass "verified" is vindicated.
+   **GENUINE RESULT (`cT_real_4d.py`):** implemented the paper's complete d=4 formula (eq. 3.30 +
+   Liu et al. Ω, via Ω's defining INTEGRAL to dodge the divergent ₄F₃(1) series). In d=4 it passes
+   EVERY gate: G1 `C_T→0` as `s→1` quadratically (`≈ −0.666·(s−1)²`, the Maldacena–Zhiboedov
+   `γ∝(breaking)²` form), G3 reality, G4 sign (`C_T<0`, OPPOSITE the pasted formula → independent
+   refutation). Concrete: `C_T(1.4, d=4) = −0.0219/N`. A literature-correct, gate-passing C_T — but
+   in **d=4 (dS₅), not physical d=3**. d=3 lacks closed-form blocks ⇒ needs the paper's general-d
+   Mellin treatment (Sec. 4) incl. the finite-β poles the authors neglect — the real d=3 frontier.
 2. **s-averaging stays shadow-positive** — SDPB, not Lean. Handoff scaffold in `driver/sdpb/`.
    `ModelP.expectedGammaT` states `⟨γ_T⟩=∫`; only the bootstrap can decide it. The actual test
    of the conjecture.
