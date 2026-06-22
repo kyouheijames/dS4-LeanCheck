@@ -133,6 +133,18 @@ Honest ledger of proved / convention / out-of-scope: see `STATUS.md` (incl. §D,
    1e-12. The literature cross-check did exactly its job: it caught a plausible-but-wrong program.
    Net: thesis vindicated by published work; our physical γ_T is eq.(7.32); generic engine kept as
    a validated Cardona–Sen tool but no longer claimed as the physical long-range γ_T.
+   **Physical γ_T structure + the locality↔non-unitarity ANCHOR (paper §7).** Physical γ_T (eq.
+   7.32): γ_T=(2α(d)δ/Γ(d/2))γ_φ̂, δ=(s*−s)/2 — vanishes at s*, ∝ short-range η. GAP: α(d) is NOT
+   in 2107.08052; it comes from ref [11] (Behan–Rastelli–Rychkov–Zan IR duality). So the ABSOLUTE
+   near-s* number needs ref [11]; deep-long-range needs the non-perturbative λ*²(s). We do NOT
+   fabricate α(d). **KEY finding for the SSB/ghost conjecture:** the paper's dual description makes
+   the locality↔non-unitarity link an EQUATION, not an analogy: ∂_μT^μν=λ*∂^ν(φ̂χ) (eq. 7.36, the
+   non-conservation is sourced by χ); ⟨χχ⟩=C_χ/|x|^{2Δχ} with C_χ=−2C(s)<0 (eq. 7.13, χ is a
+   NEGATIVE-norm / ghost-like field, since C(s)>0); χ↔σφ (eq. 7.17, the dual ghost is the
+   shadow/EOM composite). ⇒ locality-breaking (γ_T) is literally mediated by a negative-norm mode —
+   a literature-backed physical anchor for the Ω-SSB / Krein-ghost story. (`lr_vector_paper.py`.)
+   NEXT decision: (a) fetch ref [11] for α(d) to get the absolute near-s* γ_T number, or (b) build
+   the conjecture test on this ghost-χ structure (the more direct route to the SSB↔ghost question).
 2. **s-averaging stays shadow-positive** — SDPB, not Lean. Handoff scaffold in `driver/sdpb/`.
    `ModelP.expectedGammaT` states `⟨γ_T⟩=∫`; only the bootstrap can decide it. The actual test
    of the conjecture.
