@@ -54,11 +54,27 @@ is the graviton mass ∝γ_2 ~ (1/N)·breaking small enough? is there a regime w
 leave cleaner Einstein? None settled — but Einstein being PRESENT in the classical limit is the
 expected/required outcome, not in doubt.
 
+## Why Einstein isolation is STRUCTURAL, not a calculational roadblock
+A common misframing: "unbroken phase = non-local, broken phase = GR, the intermediate regime is just
+hard to calculate." Wrong for a vector model, in two ways:
+ 1. The "broken" end (s≥s*, short-range critical O(N)) is STILL higher-spin gravity at large N —
+    NOT Einstein GR. Both ends of the s-line are HS gravity; there is no GR phase to flow to.
+ 2. It is NOT a calculational difficulty. We CAN and DID calculate: γ_ℓ~1/ℓ^{2s}, DECREASING with ℓ.
+    "Lift the tower" for Einstein needs the OPPOSITE (γ_ℓ growing with ℓ). And the universal
+    large-spin (lightcone) theorem forces γ_ℓ→0 as ℓ→∞ — the HS tower is asymptotically conserved
+    (LIGHT) at every s. A vector Lagrangian has NO heavy-tower phase.
+Reason (Klebanov–Polyakov + Maldacena–Zhiboedov): the HS currents are BILINEARS χ∂^ℓχ with uniformly
+small (1/N) anomalous dimensions ⇒ vector model ⟺ HS gravity, tower light, ALWAYS. Heavy higher
+spins (Einstein isolation) require LONG operators — matrix/adjoint (Tr φⁿ) or string d.o.f., where
+the tower lifts to the string scale at strong coupling. That is a DIFFERENT Lagrangian, not a harder
+computation of ours. So calculating our Lagrangian more heroically does NOT reach Einstein.
+
 ## Net
 It IS gravity — the boundary of de Sitter HIGHER-SPIN gravity — with γ_T the graviton mass and
-locality-SSB the breaking of the gravitational gauge symmetry. The classical limit is expected to
-CONTAIN Einstein gravity (light graviton + Weinberg); the spin test shows it as "Einstein + light HS
-tower." The open questions are the SIZE of the corrections (tower decoupling, graviton mass), not
-whether Einstein is there.
+locality-SSB the breaking of the gravitational gauge symmetry. The classical limit CONTAINS Einstein
+(light graviton + Weinberg) but with a LIGHT HS tower on top ("Einstein + extra higher-spin forces").
+Reaching pure-Einstein is STRUCTURALLY out of reach for a vector model (tower always light) — it
+needs matrix/string matter, a different theory. The value here is the HS-gravity + locality-as-
+observable + non-unitarity structure, not being Einstein gravity.
 Refs: Klebanov–Polyakov 2002; Anninos–Denef–Harlow (dS/CFT, Sp(N)); Maldacena–Zhiboedov 2011/2012
 (weakly broken HS); Anninos–Hartman–Strominger. (Conceptual note; nothing here is computed/proved.)
