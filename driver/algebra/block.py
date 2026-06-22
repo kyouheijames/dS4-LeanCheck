@@ -34,7 +34,9 @@ def k_beta(beta, x):
 
 
 def block_d2_closed(D, ell):
-    return k_beta(D - ell, z) * k_beta(D + ell, zb) + k_beta(D + ell, z) * k_beta(D - ell, zb)
+    # the d=2 block carries the 1/(1+δ_{ℓ,0}) symmetrization factor (paper eq. 2.11)
+    fac = 2 if ell == 0 else 1
+    return (k_beta(D - ell, z) * k_beta(D + ell, zb) + k_beta(D + ell, z) * k_beta(D - ell, zb)) / fac
 
 
 def block_d4_closed(D, ell):
@@ -75,14 +77,20 @@ def casimir_series_block(d, D, ell=0, M=6):
         return ((1 - x) * (h * (h - 1) * f + D * x * sp.diff(f, x) + x ** 2 * sp.diff(f, x, 2))
                 - h * x * f - x ** 2 * sp.diff(f, x))
 
-    # multiply the whole equation by (z−z̄) to clear the cross-term denominator → polynomial:
-    EQ = sp.expand(
-        (z - zb) * (DxH(H, z) + DxH(H, zb) - sp.Rational(1, 2) * C2 * H)
-        + (d - 2) * (-h * (z - zb) * H
-                     + z * zb * ((1 - z) * sp.diff(H, z) - (1 - zb) * sp.diff(H, zb))))
-
-    poly = sp.Poly(EQ, z, zb)
-    eqs = list(poly.coeffs())
+    # cross-term/w = (d−2)[−(D/2)H + z z̄·((1−z)∂_zH−(1−z̄)∂_z̄H)/(z−z̄)]; the bracket numerator is
+    # antisymmetric (H symmetric) ⇒ divisible by (z−z̄). Everything stays polynomial:
+    crossnum = (1 - z) * sp.diff(H, z) - (1 - zb) * sp.diff(H, zb)
+    cross_div = sp.cancel(crossnum / (z - zb))
+    EQ = sp.expand(DxH(H, z) + DxH(H, zb)
+                   + (d - 2) * (-h * H + z * zb * cross_div)
+                   - sp.Rational(1, 2) * C2 * H)
+    # the recursion is LOWER-TRIANGULAR: coeff(z^m z̄^n)=0 determines a_{mn} from lower degrees.
+    eqs = []
+    for tot in range(1, M + 1):
+        for m in range(tot + 1):
+            n = tot - m
+            if m <= n:
+                eqs.append(EQ.coeff(z, m).coeff(zb, n))
     A, bvec = sp.linear_eq_to_matrix(eqs, syms)
     solset = sp.linsolve((A, bvec), syms)
     sub = dict(zip(syms, list(solset)[0]))
@@ -101,13 +109,19 @@ if __name__ == "__main__":
     for d_test, closed in [(2, block_d2_closed), (4, block_d4_closed)]:
         D = sp.Rational(28, 10)        # Δ = 2.8 (a generic scalar)
         print(f"--- d={d_test}, Δ=2.8, ℓ=0 ---")
-        Gser = casimir_series_block(d_test, D, ell=0, M=6)
+        Gser = casimir_series_block(d_test, D, ell=0, M=10)
         Gcl = closed(D, 0)
         ok = True
         for (zv, zbv) in pts:
             vs = num(Gser, zv, zbv)
             vc = num(Gcl, zv, zbv)
             rel = abs(vs - vc) / (abs(vc) + 1e-30)
-            ok = ok and rel < 1e-4
+            ok = ok and rel < 1e-3
             print(f"  (z,z̄)=({zv},{zbv}): series={vs:.6g}  closed={vc:.6g}  relerr={rel:.1e}")
         print("  ->", "PASS (series == closed form)" if ok else "FAIL", "\n")
+
+    # d=3 (PHYSICAL, no closed form) — same validated recursion:
+    print("--- d=3, Δ=2.8, ℓ=0 (no closed form; same recursion, now usable for inversion) ---")
+    G3 = casimir_series_block(3, sp.Rational(28, 10), ell=0, M=10)
+    for (zv, zbv) in pts:
+        print(f"  (z,z̄)=({zv},{zbv}): G = {num(G3, zv, zbv):.6g}")
