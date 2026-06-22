@@ -35,23 +35,30 @@ dictionary + dS higher-spin holography; the frontier (Einstein limit) flagged as
 - NOT established: that the lifting leaves a clean Einstein-graviton limit. That is the genuine open
   problem (Einstein gravity from a broken-HS vector model) — promising mechanism, unproven endpoint.
 
-## The spin test (γ_ℓ) — and it cuts AGAINST easy Einstein growth (`gamma_spin.py`)
+## The spin test (γ_ℓ) — what it does and does NOT show (`gamma_spin.py`)
 The leading-twist [χχ]_{0,ℓ} ARE the single-trace HS currents J_ℓ = χ∂^ℓχ, dual to the bulk spin-ℓ
 gauge fields (graviton = J_2). So γ_ℓ = the spin-ℓ gauge-field mass². Computed (generic σ-exchange,
-validated engine):
-   γ_ℓ ~ const / ℓ^{2s}  (confirmed: γ_ℓ·ℓ^{2s}→const in both d=3,4) — γ_ℓ DECREASES with ℓ.
-Reading: the **graviton (ℓ=2) is the MOST broken / heaviest** HS gauge field; higher spins become
-asymptotically CONSERVED (massless) at large ℓ (universal lightcone behaviour). This is the OPPOSITE
-of what isolating Einstein gravity needs (spin-2 light, HS heavy). So the "lift the tower" hope does
-NOT hold here — the long-range/broken phase keeps the graviton heaviest and the tower asymptotically
-free. Honest caveat: generic-exchange magnitudes, but the DECAY trend (the gravity-relevant content)
-is universal, so robust. Net: this setup is genuinely (higher-spin) gravity, but does NOT naturally
-grow to an Einstein graviton — a real, computed obstruction, not a vague gap.
+validated engine):  γ_ℓ ~ const / ℓ^{2s}  (γ_ℓ·ℓ^{2s}→const in d=3,4) — γ_ℓ DECREASES with ℓ, so the
+spin-2 graviton is the LARGEST-γ (heaviest) and higher spins are asymptotically conserved (light).
+
+CORRECTION (an earlier draft overclaimed "does not flow to Einstein" — wrong). This is the
+MICROSCOPIC SPIN SPECTRUM, not the classical limit. By Weinberg's theorem a light spin-2 MUST couple
+universally to T_μν and reproduce General Relativity at long distance — that is forced by
+consistency, not vetoable by the spectrum. So the correct reading of γ_ℓ is "Einstein + a light
+higher-spin tower" (which CONTAINS Einstein), not "non-Einstein":
+  • spin-2 present, couples universally ⇒ Einstein at long distance (Weinberg);
+  • slightly massive (γ_2>0, largest γ_ℓ) ⇒ small calculable corrections;
+  • light HS tower ⇒ extra higher-spin forces on top.
+What is genuinely OPEN (quantitative, not binary): does the HS tower decouple at observable scales?
+is the graviton mass ∝γ_2 ~ (1/N)·breaking small enough? is there a regime where the tower lifts to
+leave cleaner Einstein? None settled — but Einstein being PRESENT in the classical limit is the
+expected/required outcome, not in doubt.
 
 ## Net
 It IS gravity — the boundary of de Sitter HIGHER-SPIN gravity — with γ_T the graviton mass and
-locality-SSB the breaking of the gravitational gauge symmetry. Growth toward EINSTEIN gravity =
-lift the HS tower; the breaking mechanism is the right kind, BUT the spin test (γ_ℓ~1/ℓ^{2s}, graviton
-heaviest) shows this vector-model setup does the OPPOSITE — Einstein isolation is obstructed here.
+locality-SSB the breaking of the gravitational gauge symmetry. The classical limit is expected to
+CONTAIN Einstein gravity (light graviton + Weinberg); the spin test shows it as "Einstein + light HS
+tower." The open questions are the SIZE of the corrections (tower decoupling, graviton mass), not
+whether Einstein is there.
 Refs: Klebanov–Polyakov 2002; Anninos–Denef–Harlow (dS/CFT, Sp(N)); Maldacena–Zhiboedov 2011/2012
 (weakly broken HS); Anninos–Hartman–Strominger. (Conceptual note; nothing here is computed/proved.)
