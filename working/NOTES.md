@@ -39,6 +39,12 @@ Honest ledger of proved / convention / out-of-scope: see `STATUS.md` (incl. §D,
    (`γ_kin`, `A`) and the gate harness are in place. We did NOT force-fit A. No coefficient faked.
    (Also fixed: the `freeStressTensor` sign — physical `Δ_T=2Δχ+2=d−2(s-1)`, free `γ_T=2(1−s)`,
    below the bound for s>1, consistent with non-unitarity.)
+   **Final step** (`cT_6j.py`): exact ℓ=2 residue = `(OPE)²×[6j]_{n=0,ℓ=2}`, inputs `(Δχ,Δσ=2s)`;
+   σ is the SHADOW of `[χχ]_{0,0}` (vertex uniqueness) ⇒ Lang–Ruhl-solvable. **Principled stop:** the
+   LPRS 6j closed form is NOT reproduced from memory (a wrong-but-plausible `₄F₃` could pass gates =
+   Ric-trap). `gate_candidate(...)` validates any VERIFIED closed form the instant it is supplied
+   (refs: LPRS 2018, Cardona–Sen 2018, Caron-Huot 2017, Lang–Ruhl). The one irreducible look-up /
+   focused-calc step — deliberately not faked.
 2. **s-averaging stays shadow-positive** — SDPB, not Lean. Handoff scaffold in `driver/sdpb/`.
    `ModelP.expectedGammaT` states `⟨γ_T⟩=∫`; only the bootstrap can decide it. The actual test
    of the conjecture.
