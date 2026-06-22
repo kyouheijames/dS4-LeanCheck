@@ -71,6 +71,16 @@ Honest ledger of proved / convention / out-of-scope: see `STATUS.md` (incl. §D,
    completion (poles `s=(β−Δ+J−τ)/2−1+n`) the authors assembled only for d=4. That extension is the
    genuine open frontier — rigorously located from the actual paper, not faked. Net: verified
    gate-passing `C_T(s,d=4)`; physical d=3 precisely characterized as open (needs the d=3 completion).
+   **d=3 completion ATTEMPTED (`cT_mellin_complete.py`):** summed the residues of the full Mellin-
+   Barnes integrand (eq. 4.16) over BOTH pole sets (s=n AND the neglected s=P+n), to assemble the
+   general-d completion. **GROUND-TRUTH CHECK in d=4 vs exact eq.(3.30): FAILED** — the completion
+   returns a COMPLEX value not matching the exact answer. Diagnosis: eq.(4.16)'s `(−1)^s` form is
+   valid only at the integer s=n poles; the neglected poles need the proper double-discontinuity
+   (sin-factor) treatment at non-integer s (and/or a third pole set from Γ(1−s−Δ/2)) — exactly the
+   subtlety the paper resolved ONLY in d=4 via Liu et al. So the d=4 cross-check **REJECTED** my
+   completion → NO d=3 number shipped (the discipline working: a wrong completion caught, not
+   faked). The general-d completion is genuine open research. The verified d=4 C_T stands as the
+   established result.
 2. **s-averaging sta     ys shadow-positive** — SDPB, not Lean. Handoff scaffold in `driver/sdpb/`.
    `ModelP.expectedGammaT` states `⟨γ_T⟩=∫`; only the bootstrap can decide it. The actual test
    of the conjecture.
