@@ -41,7 +41,7 @@ make "locality" and "CPT/shadow positivity" decidable predicates rather than pro
 |--------|-----------|-------------------------|
 | `gammaT_free s = 2(s−1)` | linear order parameter | The **zero set {s=1}** is physical (conserved T iff s=1). The slope/coefficient is normalization — it is NOT the interacting anomalous dimension. |
 | `freeDim` | (d−2s)/2 | Correct at Gaussian level; receives interacting corrections (Part 2). |
-| `freeStressTensor` `Δ_T = d + 2(s−1)` (`StressTensor`) | The **zero set {s=1}** (conservation) is physical; the slope is the same normalization as `gammaT_free`. |
+| `freeStressTensor` `Δ_T = d − 2(s−1)` (`StressTensor`) | **Sign now PINNED** by the double-twist computation: the would-be T is `[χχ]_{0,2}`, `Δ_T=2Δχ+2=d−2(s−1)`, free `γ_T=2(1−s)`. (Was `+2(s−1)`; zero set unchanged, but the physical sign is `−`, putting `Δ_T<d` for `s>1` — below the spin-2 bound, consistent with non-unitarity.) `gammaT_free` stays the (sign-convention) order parameter; physical `γ_T = −gammaT_free`. |
 | `CPTLocality` couplings `s = 1+ε`, `Re Δ = d/2 + ε` (`CPTLocality`) | The **shared zero {ε=0}** is the physics (CPT-exact ⟺ local); the unit slopes are normalization. |
 | `ghostKrein` / `G = iΩ` (`Lagrangian`) | Modeling the boundary inner product as `iΩ` is a *choice* of how the Sp(N) symplectic structure becomes the Krein form; the **indefiniteness (ghost) is real and proved**, not chosen. |
 

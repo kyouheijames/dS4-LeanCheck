@@ -23,12 +23,16 @@ Honest ledger of proved / convention / out-of-scope: see `STATUS.md` (incl. §D,
 
 ## Open / NOT done (the genuinely hard parts, correctly isolated)
 
-1. **Interacting `γ_T(s)`** — CAS, not Lean. **Exact sector computed** + **spin-2 extraction set
-   up** (`large_n_selfenergy.py`, `cT_spin2.py`): free χ propagator, χ² bubble+FT, induced σ
-   propagator (Δσ=2s), η_χ=0 (all exact); `γ_{ℓ=2}` set up via the Lorentzian inversion formula
-   (dDisc of σ-exchange ⟨χχχχ⟩, spin-2 projection) with exact inputs. The remaining spinning-
-   integral / inversion residue is the open `C_T` coefficient — needs evaluation + literature
-   cross-check (anchors listed). `s→1` rail enforced. Coefficient NOT fabricated.
+1. **Interacting `γ_T(s)`** — CAS, not Lean. Progress: exact sector (`large_n_selfenergy.py`);
+   spin-2 inversion setup (`cT_spin2.py`); **validation-gate harness** (`gate_checks.py`,
+   working); and the **large-spin crack** (`cT_largespin.py`): the would-be T = double-twist
+   `[χχ]_{0,2}`, its σ-exchange γ has rigorous falloff `1/ℓ^{2s}` and exact kinematic coefficient
+   `γ_kin(s,d)`. Gating it pinned the one remaining unknown: the χχσ OPE factor `A(s,d)` (∝1/N),
+   which G1 forces to satisfy `A(1,d)=0` (free higher-spin symmetry). So
+   `C_T(s,d) = −A(s,d)·γ_kin(s,d)/2^{2s}` at ℓ=2 — structure + constraint fixed; `A(s,d)` itself
+   needs the σ-normalization assembly + a literature cross-check. **No coefficient fabricated.**
+   (Also fixed: the `freeStressTensor` sign — physical `Δ_T=2Δχ+2=d−2(s-1)`, so free `γ_T=2(1−s)`,
+   below the bound for s>1, consistent with non-unitarity.)
 2. **s-averaging stays shadow-positive** — SDPB, not Lean. Handoff scaffold in `driver/sdpb/`.
    `ModelP.expectedGammaT` states `⟨γ_T⟩=∫`; only the bootstrap can decide it. The actual test
    of the conjecture.

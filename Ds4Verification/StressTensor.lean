@@ -49,17 +49,21 @@ theorem gammaT_zero_iff_conserved (T : StressTensor) :
 
 end StressTensor
 
-/-- The would-be stress tensor of the free long-range theory at exponent `s`: its dimension
-    is `Δ_T = d + 2(s - 1)`, so `γ_T = 2(s - 1)` reproduces `Locality.gammaT_free`. -/
+/-- The would-be stress tensor of the free long-range theory is the **double-twist operator**
+    `[χχ]_{0,2}`, whose dimension is `Δ_T = 2Δχ + 2 = (d - 2s) + 2 = d - 2(s - 1)`. (Sign fixed by
+    the double-twist / Lorentzian-inversion computation: the deviation from `d` is `-2(s-1)`, not
+    `+2(s-1)`. For `s > 1` this puts `Δ_T < d`, below the spin-2 unitarity bound — consistent
+    precisely because the boundary is NON-unitary.) -/
 def freeStressTensor (d s : ℝ) : StressTensor where
   d := d
-  dimT := d + 2 * (s - 1)
+  dimT := d - 2 * (s - 1)
 
-/-- The new (dimension-based) `γ_T` of the free stress tensor agrees with the old order
-    parameter `gammaT_free s = 2(s-1)`: the `Δ_T - d` definition and the Part-1 convention
-    coincide, so nothing drifted between the layers. -/
+/-- The free stress-tensor anomalous dimension is the PHYSICAL value
+    `γ_T = Δ_T - d = 2Δχ + 2 - d = 2(1 - s) = -gammaT_free s`. The locality *order parameter*
+    `gammaT_free` (Part-1 convention) and the physical anomalous dimension share their zero set
+    (`s=1`) and differ only by the convention sign — now pinned by the double-twist value. -/
 theorem freeStressTensor_gammaT (d s : ℝ) :
-    (freeStressTensor d s).gammaT = gammaT_free s := by
+    (freeStressTensor d s).gammaT = - gammaT_free s := by
   unfold StressTensor.gammaT freeStressTensor gammaT_free; ring
 
 /-- **A construction discharging the rail.** The free long-range stress tensor is conserved
@@ -78,7 +82,7 @@ theorem freeStressTensor_conserved_iff_local (d s : ℝ) :
     predicate `IsLocal s` holds. Locality is a single machine-checked equivalence class. -/
 theorem freeStressTensor_locality_iff (d s : ℝ) :
     (freeStressTensor d s).gammaT = 0 ↔ IsLocal s := by
-  simp only [freeStressTensor_gammaT, IsLocal]
+  simp only [freeStressTensor_gammaT, neg_eq_zero, IsLocal]
 
 /-- Corollary tying the chain together explicitly (conserved ⟺ local kinetic term). -/
 theorem freeStressTensor_conserved_iff_isLocal (d s : ℝ) :
