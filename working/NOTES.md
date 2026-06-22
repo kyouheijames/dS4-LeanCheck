@@ -173,6 +173,18 @@ Honest ledger of proved / convention / out-of-scope: see `STATUS.md` (incl. §D,
    1.84 for e^{−πμ} / e^{−2πμ} / e^{−μ²}); continuation uses near-edge parabola. So NO single number
    shipped — robust content = oscillation cancels, mean real & positive ∝⟨μ²⟩. (NB this is the mean;
    the genuine "fluctuating observable" signature is Var(γ_T)=⟨γ_T²⟩>0, also regulated by e^{−πμ}.)
+   **β₃ for A — machinery VALIDATED, large-N BLOCKED** (`brrz_beta3.py`). To get the bump amplitude
+   A (=the only thing between the robust structure and a ⟨γ_T⟩ number) we need the large-N β₃
+   (α=1/β₃). Built + PASSED a validation gate: reproduced BRRZ's d=2 Ising region integral
+   I_{d=2}=−0.40346 (target −0.403746, 0.07%), β₃=1.2675 (target 1.2684); the z=0 divergences came
+   out exactly π/a² (identity) + (π/2)/a (energy), no log. So the cutoff-extraction machinery works.
+   BUT large-N O(N) is NOT a drop-in: O=φ̂ⁱχⁱ needs O(N) index combinatorics + N-counting (aligned
+   channels ~N² ⇒ O~GFF of Δ_O, but φ̂×φ̂→σ=φ̂² with σ relevant at Δ=d−2 injects an extra operator),
+   d=3 (3d integral), and there is NO independent large-N check. A factor slip ⇒ plausible-but-wrong
+   β₃ = Ric-trap at large N. So NO large-N β₃ shipped; A and the ⟨γ_T⟩ MAGNITUDE stay open. Also
+   noted: even with A, the magnitude needs the FULL analytic γ_T(s) (the Plancherel average samples
+   γ_T continued to complex s, not just the near-s* slope) + a fixed regulator. The PARAMETER-FREE
+   predictions (oscillation cancels; γ_T>0; locality genuinely fluctuates) are unaffected by all this.
 3. **Cosmology amplitude** — `PrincipalSpectrum` fixes the scaling *structure* (tilt=2ε,
    oscillation freq μ). The overall amplitude `A_s` and the oscillation size `~e^{−πμ}` need the
    late-time wavefunction / cosmological-bootstrap calc. The `n_s=4−2s, s≈1.52, Axis-of-Evil`
