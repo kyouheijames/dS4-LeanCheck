@@ -81,6 +81,14 @@ Honest ledger of proved / convention / out-of-scope: see `STATUS.md` (incl. §D,
    completion → NO d=3 number shipped (the discipline working: a wrong completion caught, not
    faked). The general-d completion is genuine open research. The verified d=4 C_T stands as the
    established result.
+   **NEW PATH — numerical Lorentzian-inversion engine** (gets d=3 from the *definition*, no pole
+   bookkeeping): **Milestone 1 DONE** (`block.py`) — the general-d scalar conformal block via the
+   quadratic-Casimir power-series recursion, VALIDATED to ~1e-8 against both d=2 and d=4 closed
+   forms; runs in d=3 (no closed form there) on the same validated code. This was the hardest
+   piece. **Milestone 2 (next):** build dDisc + the Lorentzian inversion integral, validate it
+   reproduces the exact `C_T(s,d=4)=−0.0219/N` (eq. 3.30) using the d=4 block. **Milestone 3:**
+   run at d=3, gate. If M2 reproduces d=4, the M3 d=3 number is trustworthy; if not, fix before
+   believing it — same discipline (d=4 as the rail at every step).
 2. **s-averaging sta     ys shadow-positive** — SDPB, not Lean. Handoff scaffold in `driver/sdpb/`.
    `ModelP.expectedGammaT` states `⟨γ_T⟩=∫`; only the bootstrap can decide it. The actual test
    of the conjecture.
