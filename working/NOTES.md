@@ -89,6 +89,19 @@ Honest ledger of proved / convention / out-of-scope: see `STATUS.md` (incl. §D,
    reproduces the exact `C_T(s,d=4)=−0.0219/N` (eq. 3.30) using the d=4 block. **Milestone 3:**
    run at d=3, gate. If M2 reproduces d=4, the M3 d=3 number is trustworthy; if not, fix before
    believing it — same discipline (d=4 as the rail at every step).
+   **Milestone 2 DONE — inversion engine VALIDATED** (`inversion.py`): the direct z̄-integral of
+   the leading-z log term IS the COMPLETE inversion (the Mellin s=n eq.4.18 was the incomplete
+   one; I'd compared to the wrong target). It equals the exact complete d=4 eq.(3.30) to ~1e-30,
+   constant convention factor EXACTLY 2 (7 s-values, spread 5e-11). So `C_T_inversion=(z̄-int)/2`
+   is the validated complete generic-scalar-exchange C_T in any d — no block/Mellin bookkeeping.
+   **d=3 result + finding:** real, smooth C_T(s), vanishes exactly at the d=3 threshold s=0.75
+   (confirms dDisc), BUT FAILS G1 conservation: `C_T(s=1,d=3)=−1/15 ≠ 0`. The validated engine
+   thereby EXPOSES that GENERIC σ-exchange ≠ physical stress tensor in d=3 — the **HS-σ shadow/EOM
+   structure** (σ = shadow of [χχ]_{0,0}) is required. In d=4 the threshold Δσ=2Δχ⇔s=1 makes
+   generic=physical (γ_T→0); in d=3 it doesn't, and the gate exposes it. The HS-σ correction is the
+   now-precisely-located final piece (a research sub-computation: the shadow combination /
+   inverse-bubble σ-propagator). Gate score: caught a fabrication, a wrong completion, AND a physics
+   gap — discipline working 3× over. The validated engine + block are reusable assets.
 2. **s-averaging sta     ys shadow-positive** — SDPB, not Lean. Handoff scaffold in `driver/sdpb/`.
    `ModelP.expectedGammaT` states `⟨γ_T⟩=∫`; only the bootstrap can decide it. The actual test
    of the conjecture.
