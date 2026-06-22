@@ -161,6 +161,18 @@ Honest ledger of proved / convention / out-of-scope: see `STATUS.md` (incl. §D,
 2. **s-averaging stays shadow-positive** — SDPB, not Lean. Handoff scaffold in `driver/sdpb/`.
    `ModelP.expectedGammaT` states `⟨γ_T⟩=∫`; only the bootstrap can decide it. The actual test
    of the conjecture.
+   **Measure CHOSEN: principal-series Plancherel** (`plancherel.py`). User picked the principled
+   (falsifiable, parameter-free) measure over the kinetic exponent. Setup: principal series
+   Δσ=2s=d/2+iμ ⇒ s=d/4+iμ/2; average γ_T by continuing it onto the principal line vs the d=3
+   Plancherel density ρ(μ)=μ(μ²+1/4)tanh(πμ) [=|c(μ)|⁻², SO(4,1); EVEN in μ]. **ROBUST result** (no
+   free inputs): ρ even + γ_T real-analytic ⇒ Im γ_T (the cosmological-collider OSCILLATION) is odd
+   ⇒ **cancels**; Re γ_T (even) survives ⇒ **⟨γ_T⟩ is REAL** — the dS-natural average ERASES the
+   oscillation. With the bump form γ_T≈A(s−d/4)(s*−s): Re γ_T(d/4+iμ/2)=Aμ²/4>0 ⇒ **⟨γ_T⟩=(A/4)⟨μ²⟩
+   > 0** (averaged theory non-local, scale set by the dS mass spread ⟨μ²⟩). GAPS (flagged, not
+   faked): A=large-N bump amplitude (needs large-N γ_T); ⟨μ²⟩ regulator-dependent (1.72 / 0.37 /
+   1.84 for e^{−πμ} / e^{−2πμ} / e^{−μ²}); continuation uses near-edge parabola. So NO single number
+   shipped — robust content = oscillation cancels, mean real & positive ∝⟨μ²⟩. (NB this is the mean;
+   the genuine "fluctuating observable" signature is Var(γ_T)=⟨γ_T²⟩>0, also regulated by e^{−πμ}.)
 3. **Cosmology amplitude** — `PrincipalSpectrum` fixes the scaling *structure* (tilt=2ε,
    oscillation freq μ). The overall amplitude `A_s` and the oscillation size `~e^{−πμ}` need the
    late-time wavefunction / cosmological-bootstrap calc. The `n_s=4−2s, s≈1.52, Axis-of-Evil`
