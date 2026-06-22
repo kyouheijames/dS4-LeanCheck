@@ -69,12 +69,28 @@ spins (Einstein isolation) require LONG operators — matrix/adjoint (Tr φⁿ) 
 the tower lifts to the string scale at strong coupling. That is a DIFFERENT Lagrangian, not a harder
 computation of ours. So calculating our Lagrangian more heroically does NOT reach Einstein.
 
+## CORRECT TARGET: "include Einstein", not "be Einstein"
+Real quantum gravity is NOT Einstein gravity — Einstein is the non-renormalizable IR EFT that any
+UV-complete theory must REDUCE TO, while being richer above (string theory CONTAINS Einstein, isn't
+it). So the requirement is that the graviton sector give Einstein at long distance, with the rest as
+extra UV structure. Against THAT (correct) test our theory PASSES:
+ • graviton present (T_μν) + Weinberg ⇒ Einstein at long distance — Einstein is INCLUDED ✓;
+ • the HS tower is the "more than Einstein" part — exactly the role string states play ✓.
+The earlier "isolate a lone graviton / structural obstruction" was testing the WRONG goal.
+
+The one honest DIFFERENCE: in string theory the extra states are HEAVY (Planck/string scale) ⇒
+decouple ⇒ pure Einstein at low energy. Here the HS tower is LIGHT (1/N-suppressed masses AND
+couplings, Hubble-ish). Two consequences:
+ • SIGNATURE: the light HS sector is TESTABLE — the cosmological-collider / HS imprints (PREDICTIONS.md).
+ • CONSTRAINT: it must sit below GR-test precision (fifth-force/dispersion) ⇒ needs N large enough
+   that the 1/N corrections hide from GR tests while still showing in the CMB collider channel.
+   Quantitative requirement, NOT a structural failure.
+
 ## Net
-It IS gravity — the boundary of de Sitter HIGHER-SPIN gravity — with γ_T the graviton mass and
-locality-SSB the breaking of the gravitational gauge symmetry. The classical limit CONTAINS Einstein
-(light graviton + Weinberg) but with a LIGHT HS tower on top ("Einstein + extra higher-spin forces").
-Reaching pure-Einstein is STRUCTURALLY out of reach for a vector model (tower always light) — it
-needs matrix/string matter, a different theory. The value here is the HS-gravity + locality-as-
-observable + non-unitarity structure, not being Einstein gravity.
+It is a quantum gravity that INCLUDES Einstein (graviton + Weinberg) with a calculable, LIGHT,
+testable higher-spin sector as its UV/extra structure — "Einstein + a 1/N higher-spin sector",
+not "fails to be Einstein". Open question (correct form): is N large enough that the HS corrections
+evade GR tests while remaining visible in the CMB cosmological-collider channel? The value: HS dS
+gravity + locality-as-observable + non-unitarity, with Einstein correctly contained in the IR.
 Refs: Klebanov–Polyakov 2002; Anninos–Denef–Harlow (dS/CFT, Sp(N)); Maldacena–Zhiboedov 2011/2012
 (weakly broken HS); Anninos–Hartman–Strominger. (Conceptual note; nothing here is computed/proved.)
