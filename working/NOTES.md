@@ -102,7 +102,20 @@ Honest ledger of proved / convention / out-of-scope: see `STATUS.md` (incl. §D,
    now-precisely-located final piece (a research sub-computation: the shadow combination /
    inverse-bubble σ-propagator). Gate score: caught a fabrication, a wrong completion, AND a physics
    gap — discipline working 3× over. The validated engine + block are reusable assets.
-2. **s-averaging sta     ys shadow-positive** — SDPB, not Lean. Handoff scaffold in `driver/sdpb/`.
+   **HS-σ attempt → CROSSOVER resolution** (`hs_sigma.py`): (a) the naive shadow exchange Δσ→d−2s
+   is EMPTY — its dDisc exponent p_e=(d−2s)/2−Δχ=0, so it contributes exactly 0; the HS-σ fix is
+   NOT a shadow sum. (b) The real point: I had the WRONG gate. In a LONG-RANGE model the would-be
+   stress tensor conserves at the long-range/short-range CROSSOVER s*=1−η_SR/2, NOT at s=1. s*=1 ⇔
+   η_SR=0 ⇔ short-range free ⇔ d=4; in d=3 short-range O(N) is interacting (η₁≠0) so s*<1 and
+   γ_T(s=1)≠0 is PHYSICAL, not a failure. Clean prediction: γ_T^phys(1,d)=−η₁(d), η₁(3)=8/(3π²)
+   [literature-verified, η₁(4)=0]. d=4 passes trivially (0=0) and EXPLAINS why d=4 conserves at s=1.
+   The engine is KINEMATIC (γ_kin(1,3)=−1/15 exact), so this is a SHARP FALSIFIABLE target for the
+   OPE coefficient: **C²_χχσ(1,3) = −η₁/γ_kin = 40/π² ≈ 4.053**. NOT closed — needs the independent
+   OPE coefficient; definitive reference for THIS theory is **arXiv:2107.08052 "Long-Range Vector
+   Models at Large N"**. No physical d=3 number shipped until that check closes. NET: the conservation
+   question is now a concrete literature check, not a mystery; discipline held (kinematic solid,
+   physical gated on an unverified input).
+2. **s-averaging stays shadow-positive** — SDPB, not Lean. Handoff scaffold in `driver/sdpb/`.
    `ModelP.expectedGammaT` states `⟨γ_T⟩=∫`; only the bootstrap can decide it. The actual test
    of the conjecture.
 3. **Cosmology amplitude** — `PrincipalSpectrum` fixes the scaling *structure* (tilt=2ε,
